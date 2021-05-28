@@ -54,8 +54,48 @@ a {
   background: var(--blue-gray-bg);
 }
 
+.navbar {
+  -webkit-transition: -webkit-transform var(--transition);
+  transition: -webkit-transform var(--transition);
+  transition: transform var(--transition);
+  transition: transform var(--transition), -webkit-transform var(--transition);
+}
+
+.navbar-close {
+  top: 10px;
+  right: 10px;
+  padding: 20px;
+  position: fixed;
+  font-size: 24px;
+  text-align: right;
+  color: var(--main-color-text);
+}
+
+@media (max-width: 992px) {
+  .navbar {
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    background-color: #fff;
+    -webkit-transform: translateX(-100%);
+            transform: translateX(-100%);
+  }
+  .navbar.is-open {
+    -webkit-transform: translateX(0);
+            transform: translateX(0);
+  }
+}
+
 .menu-item:not(:last-child) {
   margin-right: 20px;
+}
+
+@media (max-width: 992px) {
+  .menu-item:not(:last-child) {
+    margin-right: 0;
+  }
 }
 
 .menu-item:hover .menu-link {
@@ -89,6 +129,12 @@ a {
   color: var(--border-color);
 }
 
+@media (max-width: 992px) {
+  .button-link {
+    margin-right: 0;
+  }
+}
+
 .button-primary {
   background: var(--primary-color);
   color: #fff;
@@ -111,16 +157,38 @@ a {
 
 .button-icon {
   vertical-align: middle;
-  margin-right: 10px;
   width: 15px;
   height: 15px;
   fill: #fff;
 }
 
 .button-text {
+  margin-left: 10px;
   vertical-align: middle;
   -webkit-transition: color var(--transition);
   transition: color var(--transition);
+}
+
+.button-burger {
+  padding: 10px;
+}
+
+.button-burger:hover > .icon {
+  fill: var(--border-color);
+}
+
+.button-burger > .icon {
+  width: 25px;
+  height: 16px;
+  fill: var(--main-color-text);
+  -webkit-transition: fill var(--transition);
+  transition: fill var(--transition);
+}
+
+@media (max-width: 576px) {
+  .hero {
+    text-align: center;
+  }
 }
 
 .hero-title {
@@ -130,10 +198,21 @@ a {
   margin-top: 43px;
 }
 
+@media (max-width: 576px) {
+  .hero-title {
+    font-size: 24px;
+    line-height: 1.4;
+  }
+}
+
 .hero-text {
   font-size: 18px;
   line-height: 140%;
   margin-bottom: 30px;
+}
+
+.hero-image {
+  width: 100%;
 }
 
 .input-group {
@@ -155,6 +234,7 @@ a {
   font-size: 16px;
   background: #fff;
   line-height: 19px;
+  text-align: left;
 }
 
 .input-group > .input::-webkit-input-placeholder {
@@ -195,6 +275,21 @@ a {
   background: var(--secondary-color-text);
 }
 
+@media (max-width: 992px) {
+  .tags-group > .tag {
+    margin-left: 5px;
+    margin-right: 5px;
+  }
+}
+
+@media (max-width: 576px) {
+  .tags-label {
+    display: block;
+    text-align: center;
+    margin-bottom: 20px;
+  }
+}
+
 .section {
   padding: 70px 0 80px;
 }
@@ -204,6 +299,12 @@ a {
   line-height: 28px;
   font-weight: bold;
   margin: 0 0 40px;
+}
+
+@media (max-width: 576px) {
+  .section-title {
+    text-align: center;
+  }
 }
 
 .card {
@@ -224,6 +325,13 @@ a {
 
 .card:hover .card-text {
   color: #fff;
+}
+
+@media (max-width: 576px) {
+  .card {
+    margin: auto;
+    max-width: 250px;
+  }
 }
 
 .card-icon {
@@ -270,6 +378,13 @@ a {
   margin-left: 20px;
 }
 
+@media (max-width: 992px) {
+  .offer-title {
+    margin-left: 0;
+    text-align: center;
+  }
+}
+
 .offer-heading {
   font-size: 16px;
   line-height: 19px;
@@ -283,7 +398,7 @@ a {
 
 .offer-salary {
   color: #fff;
-  font-size: 16;
+  font-size: 16px;
   cursor: pointer;
   line-height: 19px;
   font-weight: bold;
@@ -303,6 +418,13 @@ a {
   border-color: var(--primary-color);
 }
 
+@media (max-width: 1200px) {
+  .offer-salary {
+    margin-left: 20px;
+    margin-right: 20px;
+  }
+}
+
 .offer-more {
   font-size: 14px;
   line-height: 16px;
@@ -315,6 +437,19 @@ a {
 
 .offer-more:hover {
   color: var(--border-color);
+}
+
+@media (max-width: 1200px) {
+  .offer-more {
+    margin-right: 0;
+  }
+}
+
+@media (max-width: 992px) {
+  .offer-more {
+    margin-left: auto;
+    margin-right: auto;
+  }
 }
 
 .subscribe {
@@ -344,6 +479,12 @@ a {
   padding: 70px 0 100px;
 }
 
+@media (max-width: 576px) {
+  .footer {
+    text-align: center;
+  }
+}
+
 .footer-title {
   font-size: 16px;
   font-weight: bold;
@@ -365,4 +506,10 @@ a {
   font-size: 16px;
   line-height: 19px;
   color: var(--main-color-text);
+  -webkit-transition: color var(--transition);
+  transition: color var(--transition);
+}
+
+.footer-list-link:hover {
+  color: var(--border-color);
 }
